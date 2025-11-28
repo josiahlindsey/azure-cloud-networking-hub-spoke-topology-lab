@@ -75,9 +75,9 @@ Throughout this project, I gained hands-on experience with several key Azure and
 - Understanding that peering is non-transitive (Spoke-to-Spoke requires going through Hub)
 
 ### Virtual Machines (VMs)
-- Deploying Windows and/or Linux VMs
+- Deploying Windows VMs
 - Configuring VM sizes based on workload requirements
-- Managing VM authentication (SSH keys, passwords)
+- Managing VM authentication (passwords)
 
 ### Subnets
 - Dividing VNets into smaller, logical segments
@@ -87,7 +87,7 @@ Throughout this project, I gained hands-on experience with several key Azure and
 ### Network Security Groups (NSGs)
 - Creating inbound and outbound security rules
 - Understanding rule priorities (lower number = higher priority)
-- Allowing/denying specific traffic (ICMP for ping, SSH, RDP, etc.)
+- Allowing/denying specific traffic (ICMP for ping, RDP, etc.)
 - Applying NSGs to subnets or individual network interfaces
 
 ### Networking Fundamentals
@@ -172,47 +172,22 @@ ping 10.1.1.4   # Spoke 1 VM
 ping 10.2.1.4   # Spoke 2 VM
 ```
 
-#### Linux (Bash)
+### Connectivity Test Script
 
-```bash
-# Ping a specific VM by private IP
-ping 10.0.1.4
-
-# Ping with specific count
-ping -c 10 10.0.1.4
-
-# Continuous ping
-ping 10.0.1.4
-
-# Ping with specific packet size
-ping -s 1000 10.0.1.4
-```
-
-### Connectivity Test Scripts
-
-Ready-to-use scripts are available in the `scripts/` folder:
+A ready-to-use script is available in the `scripts/` folder:
 
 | Script | Platform | Description |
 |--------|----------|-------------|
 | [test-connectivity.ps1](scripts/test-connectivity.ps1) | Windows (PowerShell) | Tests connectivity to all VMs |
-| [test-connectivity.sh](scripts/test-connectivity.sh) | Linux (Bash) | Tests connectivity to all VMs |
 
 #### Usage
 
-**Windows (PowerShell):**
 ```powershell
-# Download and run
+# Run the connectivity test script
 .\scripts\test-connectivity.ps1
 ```
 
-**Linux (Bash):**
-```bash
-# Make executable and run
-chmod +x scripts/test-connectivity.sh
-./scripts/test-connectivity.sh
-```
-
-> **Note:** Edit the IP addresses in the scripts to match your actual VM configurations.
+> **Note:** Edit the IP addresses in the script to match your actual VM configurations.
 
 ### Troubleshooting Tips
 
