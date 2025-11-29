@@ -15,7 +15,7 @@ Hello! In this lab, I built my own Hub and Spoke network in Microsoft Azure. Thi
 
 ## What is Hub and Spoke?
 
-Microsft Learn lists Hub and Spoke as "one of the network topologies recommended by the Cloud Adoption Framework". 
+Microsoft Learn lists Hub and Spoke as "one of the network topologies recommended by the Cloud Adoption Framework". 
 
 An Azure network topology is a critical element of a landing zone architecture because it defines how applications can communicate with one another.
 
