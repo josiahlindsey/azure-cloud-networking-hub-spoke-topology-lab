@@ -1,6 +1,6 @@
 # Azure Cloud Networking: Hub and Spoke Topology Lab
 
-Hello! In this lab, I built my own Hub and Spoke network in Microsoft Azure. This lab helped me learn so many important skills about Azure and networking. I learned how to create virtual networks, set up virtual machines, work with IP addresses, and control network traffic with security rules. 
+Hello! In this lab, I built my own Hub and Spoke network in Microsoft Azure. This lab helped me learn so many important skills about Azure and networking. I learned how to create virtual networks, set up virtual machines, work with IP addresses, and control network traffic with security rules. Scroll down to the bottom the see what I thought the hardest parts about this project was and how I overcame those challenges. Thanks for reading!
 
 ## Table of Contents
 
