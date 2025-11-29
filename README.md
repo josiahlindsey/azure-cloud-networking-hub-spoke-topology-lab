@@ -15,7 +15,7 @@ Hello! In this lab, I built my own Hub and Spoke network in Microsoft Azure. Thi
 
 ## What is Hub and Spoke?
 
-Microsoft Learn lists Hub and Spoke as "one of the network topologies recommended by the Cloud Adoption Framework". 
+Microsoft Learn defines Hub and Spoke as "one of the network topologies recommended by the Cloud Adoption Framework". 
 
 An Azure network topology is a critical element of a landing zone architecture because it defines how applications can communicate with one another.
 
@@ -42,30 +42,30 @@ Here's what my network looks like. The arrows show how the networks connect to e
                     ┌─────────────────────────────────────────────────────────────────┐
                     │                        AZURE CLOUD                              │
                     │                                                                 │
-                    │     ┌──────────────────┐         ┌──────────────────┐          │
-                    │     │   SPOKE 1 VNet   │         │   SPOKE 2 VNet   │          │
-                    │     │   10.1.0.0/16    │         │   10.2.0.0/16    │          │
-                    │     │                  │         │                  │          │
-                    │     │  ┌────────────┐  │         │  ┌────────────┐  │          │
-                    │     │  │    VM1     │  │         │  │    VM2     │  │          │
-                    │     │  │ 10.1.1.4   │  │         │  │ 10.2.1.4   │  │          │
-                    │     │  └────────────┘  │         │  └────────────┘  │          │
-                    │     │                  │         │                  │          │
-                    │     └────────┬─────────┘         └────────┬─────────┘          │
-                    │              │                            │                    │
-                    │              │    VNet Peering            │   VNet Peering     │
-                    │              │    (Connection)            │   (Connection)     │
-                    │              ▼                            ▼                    │
-                    │     ┌────────────────────────────────────────────────┐         │
-                    │     │                  HUB VNet                      │         │
-                    │     │                 10.0.0.0/16                    │         │
-                    │     │                                                │         │
-                    │     │  ┌─────────────┐     ┌─────────────────────┐  │         │
-                    │     │  │   Hub VM    │     │  Network Security   │  │         │
-                    │     │  │  10.0.1.4   │     │    Group (NSG)      │  │         │
-                    │     │  └─────────────┘     └─────────────────────┘  │         │
-                    │     │                                                │         │
-                    │     └────────────────────────────────────────────────┘         │
+                    │     ┌──────────────────┐         ┌──────────────────┐           │
+                    │     │   SPOKE 1 VNet   │         │   SPOKE 2 VNet   │           │
+                    │     │   10.1.0.0/16    │         │   10.2.0.0/16    │           │
+                    │     │                  │         │                  │           │
+                    │     │  ┌────────────┐  │         │  ┌────────────┐  │           │
+                    │     │  │    VM2     │  │         │  │    VM3     │  │           │
+                    │     │  │ *VM2 IP*   │  │         │  │ *VM3 IP*   │  │           │
+                    │     │  └────────────┘  │         │  └────────────┘  │           │
+                    │     │                  │         │                  │           │
+                    │     └────────┬─────────┘         └────────┬─────────┘           │
+                    │              │                            │                     │
+                    │              │    VNet Peering            │   VNet Peering      │
+                    │              │    (Connection)            │   (Connection)      │
+                    │              ▼                            ▼                     │
+                    │     ┌────────────────────────────────────────────────┐          │
+                    │     │                  HUB VNet                      │          │
+                    │     │                 10.0.0.0/16                    │          │
+                    │     │                                                │          │
+                    │     │  ┌─────────────┐     ┌─────────────────────┐   │          │
+                    │     │  │   Hub VM    │     │  Network Security   │   │          │
+                    │     │  │  *VM1 IP*   │     │    Group (NSG)      │   │          │
+                    │     │  └─────────────┘     └─────────────────────┘   │          │
+                    │     │                                                │          │
+                    │     └────────────────────────────────────────────────┘          │
                     │                                                                 │
                     └─────────────────────────────────────────────────────────────────┘
 ```
@@ -74,7 +74,6 @@ Here's what my network looks like. The arrows show how the networks connect to e
 - `10.0.0.0/16` = This is the IP address range for the Hub network (over 65,000 addresses!)
 - `10.1.0.0/16` = IP address range for Spoke 1
 - `10.2.0.0/16` = IP address range for Spoke 2
-- `10.0.1.4`, `10.1.1.4`, `10.2.1.4` = The specific IP addresses of each virtual machine
 
 ## What I Learned
 
@@ -88,7 +87,7 @@ Here's everything I learned while building this project:
 
 ### Virtual Networks (VNets)
 
-A VNet is like your own private network in the cloud. Think of it like your home WiFi network, but in Azure!
+A VNet is your own private network in the cloud. Think of it like your home WiFi network, but in Azure.
 
 - I learned how to create VNets and give them IP address ranges
 - **Important:** Each VNet needs its own unique IP range - they can't overlap!
@@ -103,7 +102,7 @@ Peering is how you connect two VNets together so they can talk to each other.
 
 ### Virtual Machines (VMs)
 
-A VM is basically a computer running in the cloud!
+A VM is basically a computer running in the cloud.
 
 - I created Windows VMs to test my network
 - Each VM gets its own IP address inside the VNet
@@ -111,14 +110,14 @@ A VM is basically a computer running in the cloud!
 
 ### Subnets
 
-Subnets are smaller sections inside a VNet. Think of it like dividing a building into different floors.
+Subnets are smaller sections inside a VNet.
 
 - You can put different VMs on different subnets for organization
 - **Good to know:** Azure reserves 5 IP addresses in every subnet (first 4 and last 1) for its own use
 
 ### Network Security Groups (NSGs)
 
-NSGs are like a firewall - they control what traffic is allowed in and out.
+NSGs control what traffic is allowed in and out.
 
 - **Inbound rules** = Control what can come INTO your VM
 - **Outbound rules** = Control what can go OUT of your VM
@@ -163,9 +162,9 @@ Each network needs its own range of IP addresses. Here's what I set up:
 
 | VNet | Subnet Name | IP Range | What's Inside |
 |------|-------------|----------|---------------|
-| Hub | default | 10.0.1.0/24 | Hub VM lives here |
-| Spoke 1 | default | 10.1.1.0/24 | Spoke 1 VM lives here |
-| Spoke 2 | default | 10.2.1.0/24 | Spoke 2 VM lives here |
+| Hub | ServicesSubnet | 10.0.1.0/24 | Hub VM lives here |
+| Spoke 1 | subnet-spoke1 | 10.1.0.0/24 | Spoke 1 VM lives here |
+| Spoke 2 | subnetspoke2 | 10.2.0.0/24 | Spoke 2 VM lives here |
 
 ## How to Test if VMs Can Talk to Each Other
 
@@ -189,7 +188,7 @@ In Azure Portal, go to your NSG and add this inbound rule:
 | Destination port ranges | * |
 | Protocol | ICMP |
 | Action | Allow |
-| Priority | 100 |
+| Priority | 1000 |
 | Name | Allow-Ping |
 
 > **What is ICMP?** It's the protocol that "ping" uses. If you don't allow ICMP, ping won't work even if your VMs are connected!
@@ -198,7 +197,7 @@ In Azure Portal, go to your NSG and add this inbound rule:
 
 ### Basic Ping Commands
 
-Open **Command Prompt** or **PowerShell** on your VM and try these:
+Open **Command Prompt** or **PowerShell** on your VM1 and try these:
 
 ```powershell
 # Basic ping - sends 4 packets and shows if it worked
@@ -212,9 +211,9 @@ ping 10.0.1.4 -t
 ping 10.0.1.4 -n 10
 
 # Test all my VMs at once
-ping 10.0.1.4   # This pings the Hub VM
-ping 10.1.1.4   # This pings Spoke 1 VM
-ping 10.2.1.4   # This pings Spoke 2 VM
+ping *insert your VM1 private IP*   # This pings the Hub VM
+ping *insert your VM2 private IP*   # This pings Spoke 1 VM
+ping *insert your VM3 private IP*   # This pings Spoke 2 VM
 ```
 
 ### What Good Output Looks Like
@@ -227,21 +226,6 @@ Reply from 10.0.1.4: bytes=32 time=1ms TTL=128
 When ping fails, you'll see:
 ```
 Request timed out.
-```
-
-### My Connectivity Test Script
-
-I created a PowerShell script that tests all VMs at once! It's in the `scripts/` folder:
-
-| Script | What It Does |
-|--------|--------------|
-| [test-connectivity.ps1](scripts/test-connectivity.ps1) | Pings all VMs and tells you which ones are reachable |
-
-#### How to Run It
-
-```powershell
-# Run this in PowerShell
-.\scripts\test-connectivity.ps1
 ```
 
 ### Troubleshooting: Ping Not Working?
@@ -261,6 +245,19 @@ If your pings are failing, check these things one by one:
 Get-NetFirewallRule -DisplayName "*ICMP*" | Select-Object DisplayName, Enabled, Direction, Action
 ```
 
+### My Connectivity Test Script
+```
+Test-NetConnection -ComputerName 10.0.1.4 -Port 3389
+```
+```
+Test-NetConnection -ComputerName 10.0.2.4 -Port 3389
+```
+```
+Test-NetConnection -ComputerName 10.0.0.4 -Port 80
+```
+```
+Test-NetConnection -ComputerName 10.0.0.4 -Port 443
+```
 ---
 
 ## Helpful Resources
