@@ -13,7 +13,7 @@ Hello! In this lab, I built my own Hub and Spoke network in Microsoft Azure. Thi
 - [Ping Commands I Used](#ping-commands-i-used)
 - [My Connectivity Test Script](#my-connectivity-test-script)
 - [What Challlenges Did I Face?](#what-challenges-did-i-face)
-- [How Did I Overcome Those Challenges](#how-did-i-overcome-those-challenges)
+- [How Did I Overcome Those Challenges?](#how-did-i-overcome-those-challenges)
 - [Helpful Resources](#helpful-resources)
 
 ## What is Hub and Spoke?
@@ -262,21 +262,16 @@ Test-NetConnection -ComputerName 10.0.0.4 -Port 80
 Test-NetConnection -ComputerName 10.0.0.4 -Port 443
 ```
 
-## What challenges did I face?
+## What Challenges Did I Face?
 
 • Keeping the naming structure of my networks and VMs consistent/staying organized
 • Performing some of the ping tests and network connection tests
 • Getting the correct network settings setup to allow for RDP connect
 • Deploying the virtual machines with the correct settings
 
-## How did I overcome those challenges?
+## How Did I Overcome Those Challenges?
 
 Despite my lack of knowledge being a hinderance, I will say what helped me overcome these challenges was focus and utilizing my resources. Microsoft Learn and google were my two best friends for me during this project. I could compare going through this project to trying to find my way through a dark tunnel, but the resources were my light. At the end of this, I can confidently say that I have a good grasp on everything I utilized within this lab and I'm confident I can create another Hub and Spoke like this with no help at all. I hope you all enjoyed reading this and stay tuned to see what I'm learning next! 
-
-
-  
-
-
 
 ---
 
