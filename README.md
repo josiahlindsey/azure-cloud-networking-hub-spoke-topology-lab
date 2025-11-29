@@ -1,6 +1,6 @@
 # Azure Cloud Networking: Hub and Spoke Topology Lab
 
-Hey! In this lab, I built my own Hub and Spoke network in Microsoft Azure. This was my first project ever! This lab helped me learn so many important skills about Azure and networking. I learned how to create virtual networks, set up virtual machines, work with IP addresses, and control network traffic with security rules.
+Hello! In this lab, I built my own Hub and Spoke network in Microsoft Azure. This lab helped me learn so many important skills about Azure and networking. I learned how to create virtual networks, set up virtual machines, work with IP addresses, and control network traffic with security rules. 
 
 ## Table of Contents
 
@@ -15,6 +15,10 @@ Hey! In this lab, I built my own Hub and Spoke network in Microsoft Azure. This 
 
 ## What is Hub and Spoke?
 
+Microsft Learn lists Hub and Spoke as "one of the network topologies recommended by the Cloud Adoption Framework". 
+
+An Azure network topology is a critical element of a landing zone architecture because it defines how applications can communicate with one another.
+
 Think of Hub and Spoke like an airport system:
 
 - **The Hub** = The main airport (like Atlanta or Chicago O'Hare) where all flights connect
@@ -23,10 +27,6 @@ Think of Hub and Spoke like an airport system:
 In Azure networking:
 - **The Hub VNet** = The central network that connects to everything
 - **The Spoke VNets** = Separate networks that connect through the hub
-
-### Why Use Hub and Spoke?
-
-Imagine you have 3 separate offices (networks). Without a hub, you'd need to connect each office directly to every other office - that's a lot of connections to manage! With a hub, each office just connects to one central point.
 
 **Benefits:**
 - 🎯 **One central place** to put shared stuff (like firewalls and security tools)
@@ -243,8 +243,6 @@ I created a PowerShell script that tests all VMs at once! It's in the `scripts/`
 # Run this in PowerShell
 .\scripts\test-connectivity.ps1
 ```
-
-> **Note:** You might need to edit the IP addresses in the script to match your VMs!
 
 ### Troubleshooting: Ping Not Working?
 
